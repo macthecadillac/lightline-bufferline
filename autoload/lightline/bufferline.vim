@@ -507,13 +507,10 @@ endfunction
 function! lightline#bufferline#init()
   augroup lightline_bufferline
     autocmd!
-    if s:auto_hide > 0 || s:min_buffer_count > 0
-      autocmd BufEnter,BufLeave,BufDelete  * call <SID>auto_tabline()
-    endif
-    if s:min_tab_count > 0
-      autocmd TabEnter  * call <SID>auto_tabline()
-    endif
+    autocmd BufEnter,BufLeave,BufDelete  * call <SID>auto_tabline()
+    autocmd TabEnter  * call <SID>auto_tabline()
   augroup END
+  call <SID>auto_tabline()
 endfunction
 
 function! lightline#bufferline#buffers()
